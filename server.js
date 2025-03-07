@@ -6,13 +6,13 @@ import { dirname } from "path";
 import bodyParser from "body-parser";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
+import cors from cors
 
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors())
 // POST /submit-report
 app.post("/submit-report", async (req, res) => {
     const { name, email, comment } = req.body;
