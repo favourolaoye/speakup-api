@@ -6,7 +6,7 @@ import { dirname } from "path";
 import bodyParser from "body-parser";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-import cors from cors
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
