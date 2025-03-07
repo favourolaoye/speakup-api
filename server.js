@@ -14,8 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // POST /submit-report
-app.post(
-  "/submit-report", async (req, res) => {
+app.post("/submit-report", async (req, res) => {
     const { name, email, comment } = req.body;
     console.log("Received comment:", { name, email, comment });
     if(!name || !email || !comment) {
@@ -43,6 +42,10 @@ app.post(
     await fs.mkdir(dataDir);
   }
 })();
+
+app.get("/", (req, res) => {
+  res.status(201).json({name: "webflux", sex: "male", height: 5.6})
+})
 
 app.listen(8080, () => {
   console.log("Server is running on port 8080");
