@@ -9,11 +9,15 @@ const __dirname = dirname(__filename);
 import cors from "cors";
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: "*",
+  methods: "GET,POST",
+  allowedHeaders: "Content-Type",
+};
+app.use(cors(corsOptions));
 app.use(express.json());
-// app.use(bodyParser.json());
 cors();
-// app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // POST /submit-report
 app.post("/submit-report", async (req, res) => {
@@ -49,6 +53,7 @@ app.get("/", (req, res) => {
   res.status(201).json({name: "webflux", sex: "male", height: 5.6})
 })
 
-app.listen(8080, () => {
-  console.log("Server is running on port 8080");
+app.listen(8080, "0.0.0.0", () => {
+  console.log("Server is running on port 8080 and accessible from other devices.");
 });
+
